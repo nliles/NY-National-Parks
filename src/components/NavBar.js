@@ -1,16 +1,14 @@
 
 import React from 'react';
-import NYIcon from "../images/NY.png"
+import USAIcon from "../images/USA.png"
 
 const  NavBar = () => {
     return (
       <header className="header">
-    		<img src={NYIcon} alt="NY"/>
-          <ul className="main-nav">
-              <li><a href="/">Home</a></li>
-              <li><a href="#">About</a></li>
-              <li><a href="#">Contact</a></li>
-          </ul>
+        <div className="div">
+      		<img className="img" src={USAIcon} alt="NY"/>
+          <h1 className="logo"><a href="/">National Parks</a></h1>
+        </div>
     	</header>
      )
   }
