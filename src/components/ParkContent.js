@@ -11,21 +11,26 @@ const ParkContent = ({park}) => {
       <div className="content-container-title">
         <h2 className="content-container-header">{park.fullName}</h2>
         <div>
-          <span>{park.designation && park.designation}</span>
-          {park.designation && <br/>}
+          {park.designation &&
+            <div>
+                <span>{park.designation && park.designation}</span>
+            </div>}
           {parkAddresses &&
             <div className="location-icon"><img src={Location} alt="location-icon"/><span>{park.addresses[0].city}, {park.addresses[0].stateCode}
             </span></div>
           }
         </div>
-        <p>{park.description}</p>
+        <div>
+          <p>{park.description}</p>
+        </div>
         <div className="camera-icon"><img src={Camera} alt="cam-icon"/><p>Photos</p></div>
+        <div className="content-container-images">
+          {
+            parkImages &&
+            park.images.map(image => <img key={image.id} src={image.url} alt={image.title}/>)
+          }
+        </div>
       </div>
-      <div className="content-container-row">
-      {
-        parkImages &&
-        park.images.map(image => <div className="content-container-column"><img key={image.id} src={image.url} alt={image.title}/></div>)
-      }</div>
     </div>
   );
 }
