@@ -1,16 +1,15 @@
-
 import React from 'react';
-import USAIcon from "../images/US.png"
+import USAIcon from "../images/USA.png"
+import { Link } from 'react-router-dom'
 
-const  NavBar = () => {
-    return (
-      <header className="header">
-        <div className="header-content">
-      		<img className="img" src={USAIcon} alt="NY"/>
-          <h1 className="logo"><a href="/">The National Parks</a></h1>
-        </div>
-    	</header>
-     )
-  }
+const  NavBar = () => (
+  <header className="header">
+    <div className="header-content">
+  		<img className="header-logo" src={USAIcon} alt="NY"/>
+      <Link to={`/`}><h1 className="header-title">The National Parks</h1></Link>
+    </div>
+	</header>
+)
+
 
 export default NavBar;

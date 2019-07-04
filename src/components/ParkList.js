@@ -64,18 +64,16 @@ class ParkList extends Component {
     const displayData = filteredData.length > 0 ? filteredData : data;
     return (
     <div className="list-container">
-       <div className="list-container-button">
-        <button className="btn" data-js="btn" onClick={() => this.setState({ showParkList: !showParkList})}>
-          <span className="btn-inr">
-            <span className="btn-text">See All Parks</span>
-          </span>
+       <div className="list-container-btn">
+        <button className="list-btn" data-js="btn" onClick={() => this.setState({ showParkList: !showParkList})}>
+            <span className="list-btn-text">See All Parks</span>
         </button>
       </div>
 
       <div className="list-view">
         {!showParkList ?
-          (<div className="text-div">
-            <div className="title"><h2>Find a National Park</h2></div>
+          (<div className="list-view-text-div">
+            <div className="list-view-title"><h2>Find a National Park</h2></div>
             <div>
               <p>Click the button above to display a complete list of
               all the national parks, monuments, and other types of proteted areas
@@ -88,27 +86,27 @@ class ParkList extends Component {
           <div className="list-view-content">
             <form>
                <input
-                 className="search-input"
+                 className="list-view-search"
                  placeholder="Find a Park..."
                  value={this.state.query}
                  onChange={this.handleInputChange}
                />
              </form>
-             <div style={{height: '700px', overflow:'scroll'}} ref={(ref) => this.scrollParentRef = ref}>
-             <ul>
-               <InfiniteScroll
-                   pageStart={1}
-                   loadMore={this.getParks}
-                   hasMore={false}
-                   //hasMore={queryLength ? false : (true || false)}
-                   useWindow={false}
-                   getScrollParent={() => this.scrollParentRef}
-                   loader={<div className="loader" key={0}>Loading...</div>}>
-                   {displayData.map(park =>
-                       <ListItem key={park.id} park={park}/>
-                   )}
-               </InfiniteScroll>
-             </ul>
+            <div className="list-view-scroll" ref={(ref) => this.scrollParentRef = ref}>
+               <ul className="list-view-list">
+                 <InfiniteScroll
+                     pageStart={1}
+                     loadMore={this.getParks}
+                     hasMore={false}
+                     //hasMore={queryLength ? false : (true || false)}
+                     useWindow={false}
+                     getScrollParent={() => this.scrollParentRef}
+                     loader={<div className="loader" key={0}>Loading...</div>}>
+                     {displayData.map(park =>
+                         <ListItem key={park.id} park={park}/>
+                     )}
+                 </InfiniteScroll>
+               </ul>
             </div>
           </div>
           :
