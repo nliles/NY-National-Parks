@@ -1,0 +1,65 @@
+.list-container-btn {
+  height: 300px;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  font-weight: 300;
+  text-align: center;
+  background: url("../images/Badlands.jpeg") no-repeat center;
+  background-size: cover;
+}
+
+.list-btn {
+  margin-bottom: 30px;
+  background-color: #191308;
+  border: 2px solid #fff;
+  border-radius: 5px;
+  font-weight: 700;
+  padding: 17px 0;
+  padding: 1.0625rem 0;
+  text-transform: uppercase;
+  width: 220px;
+  margin-bottom: 30px;
+}
+
+.list-btn-text {
+  color: #fff;
+}
+
+.list-view {
+  display: flex;
+  justify-content: center;
+}
+
+.list-view-text-div {
+    width: 50%;
+    margin-top: 40px;
+}
+
+.list-view-title {
+  text-align: center;
+}
+
+.list-view-content {
+  width: 50%;
+}
+
+.list-view-search {
+  width: 100%;
+  height: 30px;
+  margin: 40px 0 20px 0;
+  border-radius: 2px;
+  padding-left: 5px;
+  border: 1px solid #808080;
+}
+
+.list-view-scroll {
+  height: 700px;
+  overflow: scroll;
+}
+
+.list-view-list {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}

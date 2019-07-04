@@ -1,0 +1,74 @@
+.image-container {
+  width: 90%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+}
+
+.content-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.content-container-title {
+  width: 80%;
+}
+
+.location-icon {
+  display: flex;
+  align-items: center;
+  margin-left: -3px;
+  padding-right: 5px;
+}
+
+.location-icon img {
+  max-height: 20px;
+  padding-right: 3px;
+  width: auto;
+}
+
+.camera-icon {
+  display: flex;
+  margin-left: -5px;
+}
+
+.camera-icon img {
+  max-width: 50px;
+}
+
+.content-container-row {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  padding: 0 5px;
+}
+
+/* Create four equal columns that sits next to each other */
+.content-container-column {
+  flex: 25%;
+  max-width: 25%;
+  padding: 0 5px;
+}
+
+.content-container-column img {
+  margin-top: 8px;
+  vertical-align: middle;
+  width: 100%;
+}
+
+/* Responsive layout - makes a two column-layout instead of four columns */
+@media screen and (max-width: 800px) {
+  .content-container-column {
+    flex: 50%;
+    max-width: 50%;
+  }
+}
+
+/* Responsive layout - makes the two columns stack on top of each other instead of next to each other */
+@media screen and (max-width: 600px) {
+  .content-container-column {
+    flex: 100%;
+    max-width: 100%;
+  }
+}
