@@ -29,8 +29,9 @@ class ParkView extends Component {
           this.setState({
             error: "Something went wrong. Please try again later."
           });
+        } else {
+          this.setState({ park: park.data[0] });
         }
-        this.setState({ park: park.data[0] });
       })
       .catch(error => console.log(error));
   }
