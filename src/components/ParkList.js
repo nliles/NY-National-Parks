@@ -76,6 +76,7 @@ class ParkList extends Component {
     } = this.state;
 
     const displayData = query !== "" ? filteredData : data;
+    const displayNoResults = query !== "" && filteredData.length === 0;
 
     const descriptionDiv = (
       <div className="list-view-text-div">
@@ -123,6 +124,8 @@ class ParkList extends Component {
                   onChange={this.handleInputChange}
                 />
               </form>
+               {displayNoResults &&
+               <span>No Results Found</span>}
               <div
                 style={{ height: "500px", overflow: "auto" }}
                 ref={ref => (this.scrollParentRef = ref)}
