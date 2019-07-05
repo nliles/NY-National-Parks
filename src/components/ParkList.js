@@ -114,7 +114,10 @@ class ParkList extends Component {
         <div className="list-view">
           {!showParkList ? (
             descriptionDiv
-          ) : data.length > 0 ? (
+          ) : error ? (
+            <div className="error-message">{error}</div>
+          ) :
+          data.length > 0 ? (
             <div className="list-view-content">
               <form>
                 <input
@@ -144,9 +147,7 @@ class ParkList extends Component {
                 </InfiniteScroll>
               </div>
             </div>
-          ) : error ? (
-            <div className="error-message">{error}</div>
-          ) : (
+          )  : (
             <div className="loader">Loading...</div>
           )}
         </div>
