@@ -26,9 +26,12 @@ class ParkList extends Component {
     let hasMore = query !== "" ? false : true;
     this.setState({ hasMoreItems: hasMore });
 
+    const stripPunctuation = (string) => (string.toLowerCase().replace(/[^\w\s]|_/g, "")
+         .replace(/\s+/g, " "))
+
     this.setState(prevState => {
       const filteredData = prevState.data.filter(element => {
-        return element.fullName.toLowerCase().includes(query.toLowerCase());
+        return stripPunctuation(element.fullName).includes(stripPunctuation(query));
       });
 
       return {
