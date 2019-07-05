@@ -68,12 +68,14 @@ class ParkList extends Component {
   render() {
     const {
       data,
+      query,
       error,
       hasMoreItems,
       showParkList,
       filteredData
     } = this.state;
-    const displayData = filteredData.length > 0 ? filteredData : data;
+
+    const displayData = query !== "" ? filteredData : data;
 
     const descriptionDiv = (
       <div className="list-view-text-div">
