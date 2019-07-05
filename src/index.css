@@ -3,6 +3,7 @@
 @import './styles/ParkContent.css';
 @import './styles/ParkView.css';
 @import './styles/ParkList.css';
+@import './styles/ListItem.css';
 
 body {
   margin: 0;
@@ -11,4 +12,10 @@ body {
 
 a {
 	text-decoration: none;
+}
+
+.loader, .error-message {
+  font-size: 18px;
+  font-weight: bold;
+  margin-top: 30px;
 }

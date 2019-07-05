@@ -31,11 +31,12 @@
 
 .camera-icon {
   display: flex;
+  align-items: center;
   margin-left: -5px;
 }
 
 .camera-icon img {
-  max-width: 50px;
+  max-height: 40px;
 }
 
 .content-container-images {
