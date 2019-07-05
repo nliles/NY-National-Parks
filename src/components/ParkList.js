@@ -11,6 +11,7 @@ class ParkList extends Component {
   super()
     this.state = {
       query: "",
+      error: "",
       data: [],
       filteredData: [],
       showParkList: false,
@@ -42,24 +43,40 @@ class ParkList extends Component {
   };
 
   getParks = (pageNumber) => {
-    //return [];
     const { data } = this.state;
     const start = 10 * (pageNumber - 1)
     const url = `${NPS_API}/parks?limit=10&start=${start}&fields=images&sort=fullName&api_key=${API_KEY}`
     return fetch(url)
         .then((response) => response.json())
         .then((parkData) => {
-          if (this._isMounted === true) {
+          if (parkData.error) {
+            this.setState({ error: "Something went wrong. Please try again later." })
+          }
+          if (this._isMounted === true && !parkData.error) {
               const newData = data.concat(parkData.data)
               this.setState({ data: uniqBy(newData, 'id')
             })
           }
         })
-        .catch(error => { console.log(error) });
+        .catch(error => {
+          this.setState({ error: "Something went wrong. Please try again later." })
+        });
   }
 
+  getDescriptionDiv = () => (
+    <div className="list-view-text-div">
+      <div className="list-view-title"><h2>Find a National Park</h2></div>
+      <div>
+        <p>Click the button above to display a complete list of
+        all the national parks, monuments, and other types of proteted areas
+        in the United States. Click on any park in the list to get a more detailed
+        description.</p>
+      </div>
+    </div>
+  )
+
   render() {
-    const { data, query, showParkList, filteredData } = this.state
+    const { data, query, error, showParkList, filteredData } = this.state
     const queryLength = query.length > 0
     const displayData = filteredData.length > 0 ? filteredData : data;
     return (
@@ -72,15 +89,10 @@ class ParkList extends Component {
 
       <div className="list-view">
         {!showParkList ?
-          (<div className="list-view-text-div">
-            <div className="list-view-title"><h2>Find a National Park</h2></div>
-            <div>
-              <p>Click the button above to display a complete list of
-              all the national parks, monuments, and other types of proteted areas
-              in the United States. Click on any park in the list to get a more detailed
-              description.</p>
-            </div>
-          </div>)
+          this.getDescriptionDiv()
+          :
+          error !== "" ?
+          <div className="error-message">{error}</div>
           :
           data.length > 0 ?
           <div className="list-view-content">
@@ -97,8 +109,7 @@ class ParkList extends Component {
                  <InfiniteScroll
                      pageStart={1}
                      loadMore={this.getParks}
-                     hasMore={false}
-                     //hasMore={queryLength ? false : (true || false)}
+                     hasMore={queryLength ? false : (true || false)}
                      useWindow={false}
                      getScrollParent={() => this.scrollParentRef}
                      loader={<div className="loader" key={0}>Loading...</div>}>
@@ -110,7 +121,7 @@ class ParkList extends Component {
             </div>
           </div>
           :
-          'loading'
+          <div className="loader">Loading...</div>
         }
       </div>
 

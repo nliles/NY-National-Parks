@@ -11,16 +11,23 @@ class ParkView extends Component {
     }
   }
 
-  componentDidMount() {
+  componentDidMount = () => {
+    this._isMounted = true;
     this.getPark(this.props.match.params.id)
   }
 
+  componentWillUnmount() {
+    this._isMounted = false;
+  }
+
   getPark(parkCode) {
-    return fetch(`${NPS_API}/parks?parkCode=${parkCode}&fields=images,addresses&api_key=${API_KEY}`, {
-    })
+    const url = `${NPS_API}/parks?parkCode=${parkCode}&fields=images,addresses&api_key=${API_KEY}`
+    return fetch(url)
       .then((response) => response.json())
       .then((park) => {
-        this.setState({ park: park.data[0] })
+        if (this._isMounted === true) {
+          this.setState({ park: park.data[0] })
+        }
       })
       .catch(error => console.log(error));
   }

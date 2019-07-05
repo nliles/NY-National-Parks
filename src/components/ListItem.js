@@ -2,7 +2,6 @@ import React from 'react';
 import { Link } from 'react-router-dom'
 
 const ListItem = ({park}) => {
-  console.log(park)
   return (
      <div className="list-item">
         <div className="list-item-content">

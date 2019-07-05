@@ -68,6 +68,9 @@
   .list-item-content {
     width: 60%
   }
+  .list-view-text-div {
+    width: 70%
+  }
 }
 
 @media (max-width: 400px) {
@@ -76,5 +79,8 @@
   }
   .list-item-content {
     width: 100%
+  }
+  .list-view-text-div {
+    width: 90%
   }
 }
