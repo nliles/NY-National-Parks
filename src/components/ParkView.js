@@ -16,7 +16,11 @@ class ParkView extends Component {
     this.getPark(this.props.match.params.id);
   };
 
-  getPark(parkCode) {
+  componentDidUpdate = (nextProps) => {
+    this.getPark(nextProps.match.params.id);
+  }
+
+  getPark = (parkCode) => {
     const url = `${NPS_API}/parks?parkCode=${parkCode}&fields=images,addresses&api_key=${API_KEY}`;
     return fetch(url)
       .then(response => response.json())
