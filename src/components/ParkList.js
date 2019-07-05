@@ -49,14 +49,14 @@ class ParkList extends Component {
           this.setState({
             error: "Something went wrong. Please try again later."
           });
-        }
-        if (parkData.total === "0") {
+        } else if (parkData.total === "0") {
           this.setState({ hasMoreItems: false });
+        } else {
+          const newData = data.concat(parkData.data);
+          this.setState({
+            data: uniqBy(newData, "id")
+          });
         }
-        const newData = data.concat(parkData.data);
-        this.setState({
-          data: uniqBy(newData, "id")
-        });
       })
       .catch(error => {
         this.setState({
@@ -114,7 +114,10 @@ class ParkList extends Component {
         <div className="list-view">
           {!showParkList ? (
             descriptionDiv
-          ) : data.length > 0 ? (
+          ) : error ? (
+            <div className="error-message">{error}</div>
+          ) :
+          data.length > 0 ? (
             <div className="list-view-content">
               <form>
                 <input
@@ -144,9 +147,7 @@ class ParkList extends Component {
                 </InfiniteScroll>
               </div>
             </div>
-          ) : error ? (
-            <div className="error-message">{error}</div>
-          ) : (
+          )  : (
             <div className="loader">Loading...</div>
           )}
         </div>
