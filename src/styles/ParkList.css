@@ -52,35 +52,3 @@
   padding-left: 5px;
   border: 1px solid #808080;
 }
-
-.list-view-scroll {
-  height: 700px;
-  overflow: scroll;
-}
-
-.list-view-list {
-  margin: 0;
-  padding: 0;
-  list-style: none;
-}
-
-@media (max-width: 800px) {
-  .list-item-content {
-    width: 60%
-  }
-  .list-view-text-div {
-    width: 70%
-  }
-}
-
-@media (max-width: 400px) {
-  .list-item-image-container {
-    display: none;
-  }
-  .list-item-content {
-    width: 100%
-  }
-  .list-view-text-div {
-    width: 90%
-  }
-}

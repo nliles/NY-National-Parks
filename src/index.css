@@ -3,6 +3,7 @@
 @import './styles/ParkContent.css';
 @import './styles/ParkView.css';
 @import './styles/ParkList.css';
+@import './styles/ListItem.css';
 
 body {
   margin: 0;
