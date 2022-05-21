@@ -1,8 +1,6 @@
-import { useState, useEffect, useRef } from "react";
-import ListItem from "../ListItem";
-import Search from "../../../../components/Search"
+import { useState, useEffect, useRef, useCallback } from "react";
+import List from "../List";
 import { NPS_API, API_KEY } from "../../../../constants";
-import styles from "./index.module.css"
 
 const Container = () => {
   const [filteredData, setFilteredData] = useState([])
@@ -10,37 +8,73 @@ const Container = () => {
   const [pageNumber, setPageNumber] = useState(1)
   const [isFetching, setIsFetching] = useState(false);
   const [loading, setLoading] = useState(false)
-	const [error, setError] = useState(false)
+	const [error, setError] = useState("")
 	const [parks, setParks] = useState([])
   const [hasMore, setHasMore] = useState(true);
   const listRef = useRef(null)
 
-  const loadParks = async newPageNumber => {
-    const start = 10 * (newPageNumber - 1);
+  const loadParks = useCallback(async() => {
+    // console.log('here', newPageNumber)
+    //const start = 10 * (newPageNumber - 1);
+    const start = 1;
    // setLoading(true)
    try {
      const url = `${NPS_API}/parks?limit=10&start=${start}&fields=images&sort=fullName&api_key=${API_KEY}`;
      const response = await fetch(url)
-     const data = await response.json()
-     if (parks.length === data.total) {
+     const json = await response.json()
+     const { data, error, total } = json
+     if (parks.length === total) {
        setHasMore(false)
      }
-     setParks(prevItems => [...prevItems, ...data.data]);
-     setIsFetching(false);
+     if (data.length) {
+       setParks(prevItems => [...prevItems, ...data]);
+       setIsFetching(false);
+     }
+     if (error) {
+       setError(error.message)
+     }
      // setLoading(false)
    } catch (err) {
-     setError(true)
+     setError('Something went wrong. Please try again.')
      // setLoading(false)
    }
-  }
+ }, [parks.length])
+
+  // const loadParks = async newPageNumber => {
+  //   console.log('here', newPageNumber)
+  //   const start = 10 * (newPageNumber - 1);
+  //  // setLoading(true)
+  //  try {
+  //    const url = `${NPS_API}/parks?limit=10&start=${start}&fields=images&sort=fullName&api_key=${API_KEY}`;
+  //    const response = await fetch(url)
+  //    const json = await response.json()
+  //    const { data, error, total } = json
+  //    if (parks.length === total) {
+  //      setHasMore(false)
+  //    }
+  //    if (data.length) {
+  //      setParks(prevItems => [...prevItems, ...data]);
+  //      setIsFetching(false);
+  //    }
+  //    if (error) {
+  //      setError(error.message)
+  //    }
+  //    // setLoading(false)
+  //  } catch (err) {
+  //    setError('Something went wrong. Please try again.')
+  //    // setLoading(false)
+  //  }
+  // }
 
   useEffect(() => {
     loadParks(1);
-  }, []);
+  }, [loadParks]);
 
   useEffect(() => {
     if (isFetching && hasMore) {
+      console.log('here1', pageNumber)
       const newPageNumber = pageNumber + 1
+      console.log('fetch', newPageNumber)
       setPageNumber(newPageNumber)
       loadParks(newPageNumber);
     }
@@ -68,38 +102,9 @@ const Container = () => {
   };
 
     const displayData = query !== "" ? filteredData : parks;
-    const displayNoResults = query !== "" && filteredData.length === 0;
-
-    const loader = (
-      <div className={styles.loader}>
-        Loading ...
-      </div>
-    );
 
     return (
-      <div>
-        <div className={styles.image}/>
-        <div className={styles.listView}>
-          {error && (
-            <div className={styles.error}>{error}</div>
-          )}
-          {loading && (
-            <div className={styles.loader}>Loading...</div>
-          )}
-          {parks.length > 0 && (
-            <div className={styles.listContent}>
-              <Search query={query} handleInputChange={handleInputChange}/>
-               {displayNoResults &&
-               <span>No Results Found</span>}
-              <div ref={listRef} onScroll={handleScroll} className={styles.listContainer}>
-                  {displayData.map(park => (
-                    <ListItem key={park.id} park={park} />
-                  ))}
-              </div>
-            </div>
-          )}
-        </div>
-      </div>
+<List error={error} ref={listRef} loading={loading} parks={displayData} handleScroll={handleScroll} handleInputChange={handleInputChange} query={query}/>
     );
 }
 
