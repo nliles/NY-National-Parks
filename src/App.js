@@ -1,11 +1,11 @@
 import React, { Component } from 'react';
-import ParkList from './components/ParkList';
+import Container from './screens/ParkList/components/Container';
 
 class App extends Component {
   render() {
     return (
       <div className="container">
-        <ParkList/>
+        <Container/>
       </div>
     );
   }

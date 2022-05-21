@@ -1,11 +1,10 @@
 import { useState, useEffect, useRef } from "react";
 import ListItem from "../ListItem";
-import Search from "../Search"
-import { NPS_API, API_KEY } from "../../constants";
+import Search from "../../../../components/Search"
+import { NPS_API, API_KEY } from "../../../../constants";
 import styles from "./index.module.css"
-// import useParkScroll from "../hooks/useParkScroll"
 
-const ParkList = () => {
+const Container = () => {
   const [filteredData, setFilteredData] = useState([])
   const [query, setQuery] = useState('')
   const [pageNumber, setPageNumber] = useState(1)
@@ -16,23 +15,23 @@ const ParkList = () => {
   const [hasMore, setHasMore] = useState(true);
   const listRef = useRef(null)
 
-  const loadParks = async (newPageNumber) => {
-     const start = 10 * (newPageNumber - 1);
-    // setLoading(true)
-    try {
-      const url = `${NPS_API}/parks?limit=10&start=${start}&fields=images&sort=fullName&api_key=${API_KEY}`;
-      const response = await fetch(url)
-      const data = await response.json()
-      if (parks.length === data.total) {
-        setHasMore(false)
-      }
-      setParks(prevItems => [...prevItems, ...data.data]);
-      setIsFetching(false);
-      // setLoading(false)
-    } catch (err) {
-      setError(true)
-      // setLoading(false)
-    }
+  const loadParks = async newPageNumber => {
+    const start = 10 * (newPageNumber - 1);
+   // setLoading(true)
+   try {
+     const url = `${NPS_API}/parks?limit=10&start=${start}&fields=images&sort=fullName&api_key=${API_KEY}`;
+     const response = await fetch(url)
+     const data = await response.json()
+     if (parks.length === data.total) {
+       setHasMore(false)
+     }
+     setParks(prevItems => [...prevItems, ...data.data]);
+     setIsFetching(false);
+     // setLoading(false)
+   } catch (err) {
+     setError(true)
+     // setLoading(false)
+   }
   }
 
   useEffect(() => {
@@ -45,7 +44,7 @@ const ParkList = () => {
       setPageNumber(newPageNumber)
       loadParks(newPageNumber);
     }
-  }, [isFetching, pageNumber, hasMore]);
+  }, [isFetching, pageNumber, hasMore, loadParks]);
 
   const handleScroll = () => {
     const scrolled = listRef.current.scrollHeight - listRef.current.scrollTop - listRef.current.clientHeight < 1
@@ -104,4 +103,4 @@ const ParkList = () => {
     );
 }
 
-export default ParkList;
+export default Container;

@@ -4,6 +4,10 @@
   align-items: center;
 }
 
+.designation {
+  margin-bottom: 10px;
+}
+
 .image-container {
   width: 90%;
   display: flex;

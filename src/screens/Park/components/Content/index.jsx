@@ -1,32 +1,21 @@
-import Camera from "../../images/Camera.png";
-import Location from "../../images/location.png";
+import Camera from "../../../../images/Camera.png";
+import Location from "../../../../images/location.png";
+import Map from "../Map"
 import styles from "./index.module.css"
 
 const ParkContent = ({ park, error }) => {
-  const parkImages = park.images && park.images.length > 0;
-  const parkAddresses = park.addresses && park.addresses.length > 0;
-
-  console.log(park)
-
-  // if (error !== "") {
-  //   return (
-  //     <div className="list-view">
-  //       <div className="error-message">{error}</div>
-  //     </div>
-  //   );
-  // }
-
+  const { addresses, description, designation, images } = park
   return (
     <div className={styles.container}>
       <div className={styles.title}>
         <h2 className={styles.header}>{park.fullName}</h2>
         <div>
-          {park.designation && (
-            <div>
-              <span>{park.designation && park.designation}</span>
+          {designation && (
+            <div className={styles.designation}>
+              <strong>{designation}</strong>
             </div>
           )}
-          {parkAddresses && (
+          {addresses?.length && (
             <div className={styles.locationIcon}>
               <img src={Location} alt="" />
               <span>
@@ -34,17 +23,18 @@ const ParkContent = ({ park, error }) => {
               </span>
             </div>
           )}
+        <Map park={park}/>
         </div>
         <div>
-          <p>{park.description}</p>
+          <p>{description}</p>
         </div>
         <div className={styles.cameraIcon}>
           <img src={Camera} alt="" />
           <p>Photos</p>
         </div>
         <div className={styles.images}>
-          {parkImages &&
-            park.images.map(image => (
+          {images?.length > 0 &&
+            images.map(image => (
               <img key={image.id} src={image.url} alt={image.title} />
             ))}
         </div>
