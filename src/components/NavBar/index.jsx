@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import styles from "./index.module.css"
+import styles from "./index.module.css";
 
 const NavBar = () => (
   <header className={styles.header}>

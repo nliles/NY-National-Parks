@@ -1,10 +1,10 @@
 import Camera from "../../../../images/Camera.png";
 import Location from "../../../../images/location.png";
-import Map from "../Map"
-import styles from "./index.module.css"
+import Map from "../Map";
+import styles from "./index.module.css";
 
 const ParkContent = ({ park, error }) => {
-  const { addresses, description, designation, images } = park
+  const { addresses, description, designation, images } = park;
   return (
     <div className={styles.container}>
       <div className={styles.title}>
@@ -23,7 +23,7 @@ const ParkContent = ({ park, error }) => {
               </span>
             </div>
           )}
-        <Map park={park}/>
+          <Map park={park} />
         </div>
         <div>
           <p>{description}</p>
@@ -34,7 +34,7 @@ const ParkContent = ({ park, error }) => {
         </div>
         <div className={styles.images}>
           {images?.length > 0 &&
-            images.map(image => (
+            images.map((image) => (
               <img key={image.id} src={image.url} alt={image.title} />
             ))}
         </div>

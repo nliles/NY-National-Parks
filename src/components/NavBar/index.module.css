@@ -1,6 +1,6 @@
 .header {
   height: 50px;
-	background-color: #191308;
+  background-color: #191308;
 }
 
 .content {
@@ -9,7 +9,7 @@
   width: auto;
   display: flex;
   align-items: center;
-/*
+  /*
   @media (max-width: 800px) {
     margin-left: 0;
   }

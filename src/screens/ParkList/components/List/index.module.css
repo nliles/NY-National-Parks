@@ -37,8 +37,8 @@
 }
 
 .description {
-    width: 50%;
-    margin-top: 40px;
+  width: 50%;
+  margin-top: 40px;
 }
 
 .title {
@@ -51,17 +51,18 @@
 
 @media (max-width: 800px) {
   .title {
-    width: 70%
+    width: 70%;
   }
 }
 
 @media (max-width: 400px) {
   .title {
-    width: 90%
+    width: 90%;
   }
 }
 
-.loader, .error {
+.loader,
+.error {
   font-size: 18px;
   font-weight: bold;
   margin-top: 30px;

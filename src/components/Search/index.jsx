@@ -1,5 +1,5 @@
 import React from "react";
-import styles from "./index.module.css"
+import styles from "./index.module.css";
 
 const Search = ({ query, handleInputChange }) => {
   return (
@@ -11,7 +11,7 @@ const Search = ({ query, handleInputChange }) => {
         onChange={handleInputChange}
       />
     </form>
-  )
-}
+  );
+};
 
 export default Search;

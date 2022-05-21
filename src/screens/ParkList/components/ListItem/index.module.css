@@ -1,5 +1,5 @@
 .item {
-  border-bottom: 1px solid #D3D3D3;
+  border-bottom: 1px solid #d3d3d3;
   padding: 10px 0 10px 0;
   display: flex;
   align-items: center;
@@ -7,7 +7,7 @@
 }
 
 .content {
-    width: 70%;
+  width: 70%;
 }
 
 .title {
@@ -31,7 +31,7 @@
 
 @media (max-width: 800px) {
   .content {
-    width: 60%
+    width: 60%;
   }
 }
 
@@ -40,6 +40,6 @@
     display: none;
   }
   .content {
-    width: 100%
+    width: 100%;
   }
 }

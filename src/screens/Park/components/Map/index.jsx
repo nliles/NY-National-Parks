@@ -8,9 +8,9 @@ const mapStyles = {
 };
 
 const Map = ({ park }) => {
-  const { id, fullName, latitude, longitude } = park
-  const lat = Number(latitude)
-  const long = Number(longitude)
+  const { id, fullName, latitude, longitude } = park;
+  const lat = Number(latitude);
+  const long = Number(longitude);
 
   // Load the Google maps scripts
   const { isLoaded } = useJsApiLoader({
@@ -26,19 +26,15 @@ const Map = ({ park }) => {
     <div className={styles.container}>
       {!isLoaded && <div>Loading...</div>}
       {isLoaded && (
-        <GoogleMap
-          center={center}
-          mapContainerStyle={mapStyles}
-          zoom={4}
-        >
-        <Marker
-          key={id}
-          title={fullName}
-          position={{
-            lat: lat,
-            lng: long,
-          }}
-        />
+        <GoogleMap center={center} mapContainerStyle={mapStyles} zoom={4}>
+          <Marker
+            key={id}
+            title={fullName}
+            position={{
+              lat: lat,
+              lng: long,
+            }}
+          />
         </GoogleMap>
       )}
     </div>
