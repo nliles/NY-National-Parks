@@ -1,15 +1,20 @@
-.list-container-btn {
-  height: 300px;
+.image {
+  height: 350px;
   display: flex;
   align-items: flex-end;
   justify-content: center;
   font-weight: 300;
   text-align: center;
-  background: url("../images/Badlands.jpeg") no-repeat center;
+  background: url("../../images/Badlands.jpeg") no-repeat center;
   background-size: cover;
 }
 
-.list-btn {
+.listContainer {
+  height: 500px;
+  overflow: auto;
+}
+
+.listBtn {
   margin-bottom: 30px;
   background-color: #191308;
   border: 2px solid #fff;
@@ -22,33 +27,42 @@
   margin-bottom: 30px;
 }
 
-.list-btn-text {
+.btnText {
   color: #fff;
 }
 
-.list-view {
+.listView {
   display: flex;
   justify-content: center;
 }
 
-.list-view-text-div {
+.description {
     width: 50%;
     margin-top: 40px;
 }
 
-.list-view-title {
+.title {
   text-align: center;
 }
 
-.list-view-content {
+.listContent {
   width: 50%;
 }
 
-.list-view-search {
-  width: 100%;
-  height: 30px;
-  margin: 40px 0 20px 0;
-  border-radius: 2px;
-  padding-left: 5px;
-  border: 1px solid #808080;
+@media (max-width: 800px) {
+  .title {
+    width: 70%
+  }
+}
+
+@media (max-width: 400px) {
+  .title {
+    width: 90%
+  }
+}
+
+.loader, .error {
+  font-size: 18px;
+  font-weight: bold;
+  margin-top: 30px;
 }

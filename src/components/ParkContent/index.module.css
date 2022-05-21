@@ -1,3 +1,9 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
 .image-container {
   width: 90%;
   display: flex;
@@ -5,41 +11,35 @@
   justify-content: space-evenly;
 }
 
-.content-container {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
-
-.content-container-title {
+.title {
   width: 80%;
   margin-top: 30px;
 }
 
-.location-icon {
+.locationIcon {
   display: flex;
   align-items: center;
   margin-left: -3px;
   padding-right: 5px;
 }
 
-.location-icon img {
-  max-height: 20px;
-  padding-right: 3px;
-  width: auto;
-}
-
-.camera-icon {
+.cameraIcon {
   display: flex;
   align-items: center;
   margin-left: -5px;
 }
 
-.camera-icon img {
+.locationIcon img {
+  max-height: 20px;
+  padding-right: 3px;
+  width: auto;
+}
+
+.cameraIcon img {
   max-height: 40px;
 }
 
-.content-container-images {
+.images {
   line-height: 0;
   -webkit-column-count: 4;
   -webkit-column-gap: 4px;
@@ -49,14 +49,14 @@
   column-gap: 4px;
 }
 
-.content-container-images img {
+.images img {
   width: 100%;
   height: auto;
   margin-bottom: 3px;
 }
 
 @media (max-width: 800px) {
-  .content-container-images {
+  .images {
     -moz-column-count: 2;
     -webkit-column-count: 2;
     column-count: 2;
@@ -64,7 +64,7 @@
 }
 
 @media (max-width: 400px) {
-  .content-container-images {
+  .images {
     -moz-column-count: 1;
     -webkit-column-count: 1;
     column-count: 1;

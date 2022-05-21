@@ -1,23 +1,25 @@
-import React from "react";
-import Camera from "../images/Camera.png";
-import Location from "../images/Location.png";
+import Camera from "../../images/Camera.png";
+import Location from "../../images/location.png";
+import styles from "./index.module.css"
 
 const ParkContent = ({ park, error }) => {
   const parkImages = park.images && park.images.length > 0;
   const parkAddresses = park.addresses && park.addresses.length > 0;
 
-  if (error !== "") {
-    return (
-      <div className="list-view">
-        <div className="error-message">{error}</div>
-      </div>
-    );
-  }
+  console.log(park)
+
+  // if (error !== "") {
+  //   return (
+  //     <div className="list-view">
+  //       <div className="error-message">{error}</div>
+  //     </div>
+  //   );
+  // }
 
   return (
-    <div className="content-container">
-      <div className="content-container-title">
-        <h2 className="content-container-header">{park.fullName}</h2>
+    <div className={styles.container}>
+      <div className={styles.title}>
+        <h2 className={styles.header}>{park.fullName}</h2>
         <div>
           {park.designation && (
             <div>
@@ -25,8 +27,8 @@ const ParkContent = ({ park, error }) => {
             </div>
           )}
           {parkAddresses && (
-            <div className="location-icon">
-              <img src={Location} alt="location-icon" />
+            <div className={styles.locationIcon}>
+              <img src={Location} alt="" />
               <span>
                 {park.addresses[0].city}, {park.addresses[0].stateCode}
               </span>
@@ -36,11 +38,11 @@ const ParkContent = ({ park, error }) => {
         <div>
           <p>{park.description}</p>
         </div>
-        <div className="camera-icon">
-          <img src={Camera} alt="cam-icon" />
+        <div className={styles.cameraIcon}>
+          <img src={Camera} alt="" />
           <p>Photos</p>
         </div>
-        <div className="content-container-images">
+        <div className={styles.images}>
           {parkImages &&
             park.images.map(image => (
               <img key={image.id} src={image.url} alt={image.title} />

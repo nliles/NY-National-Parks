@@ -1,4 +1,4 @@
-import React from 'react';
+import ReactDOM from 'react-dom/client';
 import './index.css';
 import App from './App';
 import ParkView from './components/ParkView';
@@ -6,7 +6,8 @@ import { render } from 'react-dom';
 import { Route, Switch, HashRouter } from 'react-router-dom';
 import NavBar from './components/NavBar';
 
-render(
+const root = ReactDOM.createRoot(document.getElementById('root'));
+root.render(
     <HashRouter>
       <div>
         <NavBar />
@@ -17,6 +18,5 @@ render(
           component={ParkView}/>
         </Switch>
       </div>
-    </HashRouter>,
-  document.getElementById('root'),
+    </HashRouter>
 );
