@@ -4,7 +4,7 @@ import Search from "../../../../components/Search";
 import styles from "./index.module.css";
 
 const List = forwardRef(
-  ({ query, parks, loading, error, handleScroll, handleInputChange }, ref) => {
+  ({ query, parks, error, handleScroll, handleInputChange }, ref) => {
     const displayNoResults = query !== "" && parks.length === 0;
 
     return (
@@ -14,7 +14,6 @@ const List = forwardRef(
           {error && !parks.length && (
             <div className={styles.error}>{error}</div>
           )}
-          {loading && <div className={styles.loader}>Loading...</div>}
           {parks.length > 0 && (
             <div className={styles.listContent}>
               <Search query={query} handleInputChange={handleInputChange} />
