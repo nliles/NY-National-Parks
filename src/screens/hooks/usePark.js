@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { API_KEY, NPS_API } from "../../../constants";
+import { API_KEY, NPS_API } from "./../../constants";
 
 function useParks(parkCode) {
   const [loading, setLoading] = useState(false);

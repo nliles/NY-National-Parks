@@ -1,9 +1,9 @@
 import { withRouter } from "react-router";
 import ParkContent from "../Content";
-import useParks from "../../hooks/useParks";
+import usePark from "../../../hooks/usePark";
 
 const ParkView = ({ match }) => {
-  const { parks, loading, error } = useParks(match.params.id);
+  const { parks, loading, error } = usePark(match.params.id);
   const park = parks[0] || {};
 
   return <ParkContent park={park} loading={loading} error={error} />;

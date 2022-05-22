@@ -1,59 +1,20 @@
-import { useState, useEffect, useRef, useCallback } from "react";
+import { useState, useEffect, useRef } from "react";
 import List from "../List";
-import { NPS_API, API_KEY } from "../../../../constants";
-
-const fetchPark = async (pageNumber) => {
-  console.log('here')
-  const start = 10 * (pageNumber - 1);
-  const url = `${NPS_API}/parks?limit=10&start=${start}&fields=images&sort=fullName&api_key=${API_KEY}`;
-  const response = await fetch(url);
-  const json = await response.json();
-  const { data, error, total } = json;
-  return { data, error, total }
-}
+import useParks from "../../../hooks/useParks";
 
 const Container = () => {
   const [filteredData, setFilteredData] = useState([]);
   const [query, setQuery] = useState("");
-  const [isFetching, setIsFetching] = useState(false);
-  const [error, setError] = useState("");
-  const [parks, setParks] = useState([]);
-  const [hasMore, setHasMore] = useState(true);
+  const [pageNumber, setPageNumber] = useState(1);
   const listRef = useRef(null);
-
-  let pageNumber = 0
-
-  const loadParks = useCallback(
-    async () => {
-        try {
-          const { data, error, total } = await fetchPark(pageNumber)
-          if (parks.length === total) {
-            setHasMore(false);
-          }
-          if (data.length) {
-            setParks((prevItems) => [...prevItems, ...data]);
-            setIsFetching(false);
-          }
-          if (error) {
-            setError(error.message);
-          }
-        } catch (err) {
-          setError("Something went wrong. Please try again.");
-        }
-    },
-    [pageNumber, parks.length]
-);
+  const { isFetching, setIsFetching, parks, error, total } =
+    useParks(pageNumber);
 
   useEffect(() => {
-    loadParks();
-  }, [loadParks]);
-
-  useEffect(() => {
-    if (isFetching && hasMore) {
-      pageNumber++
-      loadParks();
+    if (isFetching && parks.length < total) {
+      setPageNumber((prevNumber) => prevNumber + 1);
     }
-  }, [isFetching, hasMore, loadParks, pageNumber]);
+  }, [isFetching, parks, total]);
 
   const handleScroll = () => {
     const scrolled =
@@ -62,7 +23,6 @@ const Container = () => {
         listRef.current.clientHeight <
       1;
     if (scrolled) {
-      console.log('scrolled')
       setIsFetching(true);
     }
   };
