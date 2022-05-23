@@ -75,8 +75,8 @@ const Map = ({ park }) => {
   });
 
   const center = {
-    lat: lat,
-    lng: long,
+    lat: lat || 0,
+    lng: long || 0,
   };
 
   return (

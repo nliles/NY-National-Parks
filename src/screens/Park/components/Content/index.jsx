@@ -9,7 +9,7 @@ const ParkContent = ({ park, error }) => {
     <div className={styles.container}>
       <div className={styles.subContainer}>
         {park.fullName && (
-          <div className={styles.header}>
+          <div className={styles.header} key={park.fullName}>
             <h2 className={styles.header}>{park.fullName}</h2>
             <strong>{designation}</strong>
           </div>
@@ -19,7 +19,7 @@ const ParkContent = ({ park, error }) => {
         </div>
         <div className={styles.location}>
           {addresses?.length && (
-            <div className={styles.locationIcon}>
+            <div className={styles.locationIcon} key={park.addresses[0].line1}>
               <img src={Location} alt="" />
               <span>
                 {park.addresses[0].city}, {park.addresses[0].stateCode}
@@ -35,7 +35,7 @@ const ParkContent = ({ park, error }) => {
         <div className={styles.images}>
           {images?.length > 0 &&
             images.map((image) => (
-              <img key={image.id} src={image.url} alt={image.title} />
+              <img key={image.title} src={image.url} alt={image.title} />
             ))}
         </div>
       </div>
