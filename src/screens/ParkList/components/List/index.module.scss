@@ -43,22 +43,18 @@
 
 .title {
   text-align: center;
+
+  @media (max-width: 800px) {
+    width: 70%;
+  }
+
+  @media (max-width: 400px) {
+    width: 90%;
+  }
 }
 
 .listContent {
   width: 50%;
-}
-
-@media (max-width: 800px) {
-  .title {
-    width: 70%;
-  }
-}
-
-@media (max-width: 400px) {
-  .title {
-    width: 90%;
-  }
 }
 
 .loader,

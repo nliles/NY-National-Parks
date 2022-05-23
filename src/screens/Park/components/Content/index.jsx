@@ -1,7 +1,7 @@
 import Camera from "../../../../images/Camera.png";
 import Location from "../../../../images/location.png";
 import Map from "../Map";
-import styles from "./index.module.css";
+import styles from "./index.module.scss";
 
 const ParkContent = ({ park, error }) => {
   const { addresses, description, designation, images } = park;

@@ -8,6 +8,14 @@
 
 .content {
   width: 70%;
+
+  @media (max-width: 400px) {
+    width: 100%;
+  }
+
+  @media (max-width: 800px) {
+    width: 60%;
+  }
 }
 
 .title {
@@ -22,24 +30,13 @@
   max-width: 125px;
   min-width: 125px;
   margin-right: 5px;
+
+  @media (max-width: 400px) {
+    display: none;
+  }
 }
 
 .image {
   width: 100%;
   max-width: 125px;
-}
-
-@media (max-width: 800px) {
-  .content {
-    width: 60%;
-  }
-}
-
-@media (max-width: 400px) {
-  .imageContainer {
-    display: none;
-  }
-  .content {
-    width: 100%;
-  }
 }

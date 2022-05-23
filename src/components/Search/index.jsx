@@ -1,15 +1,20 @@
 import React from "react";
-import styles from "./index.module.css";
+import styles from "./index.module.scss";
 
 const Search = ({ handleInputChange }) => {
   return (
     <form>
-      <input
-        className={styles.search}
-        placeholder="Find a Park..."
-        onChange={handleInputChange}
-        type="search"
-      />
+      <div className={styles.inputContainer}>
+        <label htmlFor="parkSearch">Search for parks by name</label>
+        <input
+          name="parkSearch"
+          id="parkSearch"
+          className={styles.search}
+          placeholder="Enter a park name"
+          onChange={handleInputChange}
+          type="search"
+        />
+      </div>
     </form>
   );
 };

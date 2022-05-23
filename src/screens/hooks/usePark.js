@@ -6,9 +6,9 @@ function useParks({ parkCode, query, searchByCode = true }) {
   const [error, setError] = useState(false);
   const [parks, setParks] = useState([]);
 
-  const url = searchByCode ?
-`${NPS_API}/parks?parkCode=${parkCode}&fields=images,addresses&api_key=${API_KEY}` :
-`${NPS_API}/parks?q=${query}&fields=images&api_key=${API_KEY}`;
+  const url = searchByCode
+    ? `${NPS_API}/parks?parkCode=${parkCode}&fields=images,addresses&api_key=${API_KEY}`
+    : `${NPS_API}/parks?q=${query}&fields=images&api_key=${API_KEY}`;
 
   useEffect(() => {
     const fetchParks = async () => {
