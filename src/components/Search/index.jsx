@@ -1,14 +1,14 @@
 import React from "react";
 import styles from "./index.module.css";
 
-const Search = ({ query, handleInputChange }) => {
+const Search = ({ handleInputChange }) => {
   return (
     <form>
       <input
         className={styles.search}
         placeholder="Find a Park..."
-        value={query}
         onChange={handleInputChange}
+        type="search"
       />
     </form>
   );

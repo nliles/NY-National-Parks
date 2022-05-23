@@ -1,3 +1,9 @@
+.nav {
+  position: fixed;
+  width: 100vw;
+  z-index: 1;
+}
+
 .header {
   height: 50px;
   background-color: #191308;

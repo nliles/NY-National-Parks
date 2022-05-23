@@ -14,10 +14,10 @@ const List = forwardRef(
           {error && !parks.length && (
             <div className={styles.error}>{error}</div>
           )}
-          {parks.length > 0 && (
-            <div className={styles.listContent}>
-              <Search query={query} handleInputChange={handleInputChange} />
-              {displayNoResults && <span>No Results Found</span>}
+          <div className={styles.listContent}>
+            <Search handleInputChange={handleInputChange} />
+            {displayNoResults && <span>No Results Found</span>}
+            {parks.length > 0 && (
               <div
                 ref={ref}
                 onScroll={handleScroll}
@@ -27,8 +27,8 @@ const List = forwardRef(
                   <ListItem key={park.id} park={park} />
                 ))}
               </div>
-            </div>
-          )}
+            )}
+          </div>
         </div>
       </div>
     );

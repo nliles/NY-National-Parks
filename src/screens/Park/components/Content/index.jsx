@@ -7,14 +7,17 @@ const ParkContent = ({ park, error }) => {
   const { addresses, description, designation, images } = park;
   return (
     <div className={styles.container}>
-      <div className={styles.title}>
-        <h2 className={styles.header}>{park.fullName}</h2>
-        <div>
-          {designation && (
-            <div className={styles.designation}>
-              <strong>{designation}</strong>
-            </div>
-          )}
+      <div className={styles.subContainer}>
+        {park.fullName && (
+          <div className={styles.header}>
+            <h2 className={styles.header}>{park.fullName}</h2>
+            <strong>{designation}</strong>
+          </div>
+        )}
+        <div className={styles.description}>
+          <p>{description}</p>
+        </div>
+        <div className={styles.location}>
           {addresses?.length && (
             <div className={styles.locationIcon}>
               <img src={Location} alt="" />
@@ -25,12 +28,9 @@ const ParkContent = ({ park, error }) => {
           )}
           <Map park={park} />
         </div>
-        <div>
-          <p>{description}</p>
-        </div>
         <div className={styles.cameraIcon}>
           <img src={Camera} alt="" />
-          <p>Photos</p>
+          <span>Photos</span>
         </div>
         <div className={styles.images}>
           {images?.length > 0 &&
