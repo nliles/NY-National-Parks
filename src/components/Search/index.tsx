@@ -2,8 +2,8 @@ import { FormEvent } from "react";
 import styles from "./index.module.scss";
 
 type SearchProps = {
-  handleInputChange: (e: FormEvent<HTMLInputElement>) => void
-}
+  handleInputChange: (e: FormEvent<HTMLInputElement>) => void;
+};
 
 const Search = ({ handleInputChange }: SearchProps) => {
   return (

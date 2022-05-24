@@ -31,9 +31,7 @@ const ParkContent = ({ loading, park, error }: ParkContentProps) => {
     <div className={styles.container}>
       <div className={styles.subContainer}>
         {error && <ErrorMsg msg={error} />}
-        {loading && (
-            <Spinner />
-        )}
+        {loading && <Spinner />}
         {!error && !loading && park && (
           <>
             <Header designation={designation} url={url} fullName={fullName} />

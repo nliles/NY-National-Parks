@@ -1,6 +1,6 @@
 import { GoogleMap, Marker, useJsApiLoader } from "@react-google-maps/api";
 import { GOOGLE_API_KEY } from "../../../../constants";
-import { mapStyles } from './mapStyles'
+import { mapStyles } from "./mapStyles";
 
 const mapContainerStyle = {
   height: "60vh",
@@ -8,11 +8,11 @@ const mapContainerStyle = {
 };
 
 type MapProps = {
-  id: string,
-  fullName: string,
-  latitude: string,
-  longitude: string
-}
+  id: string;
+  fullName: string;
+  latitude: string;
+  longitude: string;
+};
 
 const Map = ({ id, fullName, latitude, longitude }: MapProps) => {
   const lat = Number(latitude);
@@ -20,7 +20,7 @@ const Map = ({ id, fullName, latitude, longitude }: MapProps) => {
 
   // Load the Google maps scripts
   const { isLoaded } = useJsApiLoader({
-    googleMapsApiKey: GOOGLE_API_KEY || ''
+    googleMapsApiKey: GOOGLE_API_KEY || "",
   });
 
   const center = {
