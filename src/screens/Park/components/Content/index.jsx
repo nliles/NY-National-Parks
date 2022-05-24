@@ -6,7 +6,7 @@ import Images from "./Images";
 import styles from "./index.module.scss";
 
 const ParkContent = ({ park, error }) => {
-  const { addresses, description, designation, images, url } = park;
+  const { addresses, description, designation, fullName, images, latitude, longitude, url } = park;
   const locationText = `${park?.addresses?.[0].city}, ${park?.addresses?.[0].stateCode}`;
   return (
     <div className={styles.container}>
@@ -14,10 +14,10 @@ const ParkContent = ({ park, error }) => {
         {error && <ErrorMsg msg={error} />}
         {!error && park && (
           <>
-            {park.fullName && (
+            {fullName && (
               <div className={styles.header}>
                 <h2 className={styles.header}>
-                  <a href={park.url}>{park.fullName}</a>
+                  <a href={url}>{fullName}</a>
                 </h2>
                 <strong>{designation}</strong>
               </div>
@@ -33,7 +33,7 @@ const ParkContent = ({ park, error }) => {
                   klass={styles.locationIcon}
                 />
               )}
-              {park.latitude && park.longitude && <Map park={park} />}
+              {latitude && longitude && <Map park={park} />}
             </div>
             {images?.length > 0 && <Images imageArr={images} />}
           </>

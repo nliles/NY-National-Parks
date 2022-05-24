@@ -12,7 +12,6 @@ const List = forwardRef(
       parks,
       error,
       loading,
-      filteredLoading,
       searchError,
       handleScroll,
       handleInputChange,
@@ -26,13 +25,12 @@ const List = forwardRef(
         {!error && loading && <Spinner/>}
         {!loading && (
           <>
-          <div className={styles.image} />
           <div className={styles.listView}>
             <div className={styles.listContent}>
               {error && <ErrorMsg msg={error} />}
-              {!error && !loading && (
+              {!error && (
                 <>
-                  <Search handleInputChange={handleInputChange} disabled={filteredLoading}/>
+                  <Search handleInputChange={handleInputChange}/>
                   {!loading && displayNoResults && <span>No Results Found</span>}
                   <div
                     ref={ref}

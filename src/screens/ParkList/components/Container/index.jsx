@@ -8,11 +8,10 @@ const Container = () => {
   const [query, setQuery] = useState("");
   const [pageNumber, setPageNumber] = useState(1);
   const listRef = useRef(null);
-  const { isFetching, setIsFetching, parks, error, loading, total } =
+  const { isFetching, setIsFetching, parks, error, total } =
     useParks(pageNumber);
   const {
     parks: filteredParks,
-    loading: filteredLoading,
     error: searchError,
   } = usePark({
     query,
@@ -52,8 +51,6 @@ const Container = () => {
       error={error}
       searchError={searchError}
       ref={listRef}
-      loading={loading}
-      filteredLoading={filteredLoading}
       parks={displayData}
       handleScroll={handleScroll}
       handleInputChange={handleInputChange}

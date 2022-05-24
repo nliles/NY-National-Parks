@@ -1,7 +1,13 @@
 import cn from "classnames";
 import styles from "./index.module.scss";
 
-const Icon = ({ src, text, klass }) => {
+type IconProps = {
+  src: string,
+  text: string,
+  klass: string
+}
+
+const Icon = ({ src, text, klass }: IconProps) => {
   return (
     <div className={cn([styles.container], klass)}>
       <img src={src} alt="" />
