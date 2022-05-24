@@ -1,3 +1,3 @@
-export const API_KEY = "coWPLtsaQYAhRKBnWEEOKcnnNXgKwGHDBn7vLl1c";
-export const NPS_API = "https://developer.nps.gov/api/v1";
-export const GOOGLE_API_KEY = "AIzaSyD2PXpY9m7cUzNbyLzenp9w2Q436QKvYzI";
+export const NPS_API_KEY = process.env.REACT_APP_NPS_API_KEY
+export const NPS_BASE_URL = "https://developer.nps.gov/api/v1";
+export const GOOGLE_API_KEY = process.env.REACT_APP_GOOGLE_API_KEY

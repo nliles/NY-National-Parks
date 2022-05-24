@@ -37,7 +37,7 @@ const Container = () => {
     setQuery(query);
   };
 
-  const filteredData = filteredParks.filter((element) => {
+  const filteredData = filteredParks?.filter((element) => {
     return stripPunctuation(element.fullName).includes(stripPunctuation(query));
   });
 
