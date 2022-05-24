@@ -1,6 +1,6 @@
 import location from "../../../../images/location.png";
 import ErrorMsg from "../../../../components/ErrorMsg";
-import Icon from "./Icon"
+import Icon from "../../../../components/Icon"
 import Map from "../Map";
 import Images from "./Images";
 import styles from "./index.module.scss";

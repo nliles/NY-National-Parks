@@ -1,4 +1,4 @@
-import Icon from "./Icon"
+import Icon from "../../../../components/Icon"
 import camera from "../../../../images/camera.png";
 import styles from "./index.module.scss";
 
