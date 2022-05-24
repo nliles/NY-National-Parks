@@ -5,8 +5,8 @@ import Search from "../../../../components/Search";
 import styles from "./index.module.scss";
 
 const List = forwardRef(
-  ({ query, parks, loading, error, handleScroll, handleInputChange }, ref) => {
-    const displayNoResults = query && parks.length === 0;
+  ({ query, parks, loading, error, searchError, handleScroll, handleInputChange }, ref) => {
+    const displayNoResults = query && parks?.length === 0;
 
     return (
       <div className={styles.wrapper}>
@@ -14,17 +14,20 @@ const List = forwardRef(
         <div className={styles.listView}>
           <div className={styles.listContent}>
             {error && <ErrorMsg msg={error} />}
-            {!error && parks.length > 0 && (
+            {!error && (
               <>
                 <Search handleInputChange={handleInputChange} />
                 {!loading && displayNoResults && <span>No Results Found</span>}
-                {!loading && parks.length > 0 && (
+                {!loading && (
                   <div
                     ref={ref}
                     onScroll={handleScroll}
                     className={styles.listContainer}
                   >
-                    {parks.map((park) => (
+                    {searchError && (
+                      <ErrorMsg msg={searchError} />
+                    )}
+                    {!searchError && parks?.map((park) => (
                       <ListItem key={park.id} park={park} />
                     ))}
                   </div>

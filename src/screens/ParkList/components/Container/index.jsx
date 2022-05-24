@@ -50,6 +50,7 @@ const Container = () => {
   return (
     <List
       error={error}
+      searchError={searchError}
       ref={listRef}
       loading={loading}
       parks={displayData}

@@ -27,7 +27,9 @@ function useParks({ parkCode, query, searchByCode = true }) {
       }
     };
 
-    fetchParks();
+    if (searchByCode || query) {
+      fetchParks();
+    }
   }, [parkCode, query, url]);
 
   return {
