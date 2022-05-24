@@ -1,8 +1,13 @@
-import Icon from "../../../../components/Icon";
-import camera from "../../../../images/camera.png";
+import Icon from "components/Icon";
+import camera from "images/camera.png";
 import styles from "./index.module.scss";
+import { Image } from "types";
 
-const Images = ({ imageArr }) => (
+type ImageProps = {
+  imageArr: Image[];
+};
+
+const Images = ({ imageArr }: ImageProps) => (
   <div>
     <Icon src={camera} text="Photos" />
     <div className={styles.images}>

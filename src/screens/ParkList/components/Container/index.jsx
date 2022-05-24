@@ -1,8 +1,8 @@
 import { useState, useEffect, useRef } from "react";
 import List from "../List";
-import usePark from "../../../hooks/usePark";
-import useParks from "../../../hooks/useParks";
-import { stripPunctuation } from "../../../helpers/stripPunctuation";
+import usePark from "screens/hooks/usePark";
+import useParks from "screens/hooks/useParks";
+import { stripPunctuation } from "screens/helpers/stripPunctuation";
 
 const Container = () => {
   const [query, setQuery] = useState("");
@@ -10,10 +10,7 @@ const Container = () => {
   const listRef = useRef(null);
   const { isFetching, setIsFetching, parks, error, total } =
     useParks(pageNumber);
-  const {
-    parks: filteredParks,
-    error: searchError,
-  } = usePark({
+  const { parks: filteredParks, error: searchError } = usePark({
     query,
     searchByCode: false,
   });
@@ -25,13 +22,15 @@ const Container = () => {
   }, [isFetching, parks, total]);
 
   const handleScroll = () => {
-    const scrolled =
-      listRef.current.scrollHeight -
-        listRef.current.scrollTop -
-        listRef.current.clientHeight <
-      1;
-    if (scrolled) {
-      setIsFetching(true);
+    if (listRef?.current) {
+      const scrolled =
+        listRef.current.scrollHeight -
+          listRef.current.scrollTop -
+          listRef.current.clientHeight <
+        1;
+      if (scrolled) {
+        setIsFetching(true);
+      }
     }
   };
 

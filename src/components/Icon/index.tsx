@@ -2,10 +2,10 @@ import cn from "classnames";
 import styles from "./index.module.scss";
 
 type IconProps = {
-  src: string,
-  text: string,
-  klass: string
-}
+  src: string;
+  text: string;
+  klass?: string;
+};
 
 const Icon = ({ src, text, klass }: IconProps) => {
   return (

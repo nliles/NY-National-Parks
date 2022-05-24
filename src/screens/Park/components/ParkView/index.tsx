@@ -1,6 +1,6 @@
 import { useLocation } from "react-router-dom";
 import ParkContent from "../Content";
-import usePark from "../../../hooks/usePark";
+import usePark from "screens/hooks/usePark";
 
 const ParkView = () => {
   const location = useLocation();

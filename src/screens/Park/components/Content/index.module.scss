@@ -1,4 +1,5 @@
 .container {
+  height: 100vh;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -7,6 +8,7 @@
 .subContainer {
   margin-top: 75px;
   width: 75%;
+  height: 100%;
 }
 
 .header {
@@ -75,4 +77,8 @@
     height: 100%;
     margin-bottom: 10px;
   }
+}
+
+.loading {
+  height: 100%;
 }

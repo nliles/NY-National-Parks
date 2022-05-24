@@ -13,11 +13,13 @@ const NavBar = () => {
           </Link>
         </div>
       </header>
-      <div className={cn([styles.image], {
-        [styles.show]: pathname === '/'
-      })} />
+      <div
+        className={cn([styles.image], {
+          [styles.show]: pathname === "/",
+        })}
+      />
     </nav>
   );
-}
+};
 
 export default NavBar;

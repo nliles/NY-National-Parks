@@ -1,9 +1,11 @@
 import styles from "./index.module.scss";
 
 type ErrorProps = {
-  msg: string
-}
+  msg: string;
+};
 
-const ErrorMsg = ({ msg }: ErrorProps) => <div className={styles.error}>{msg}</div>;
+const ErrorMsg = ({ msg }: ErrorProps) => (
+  <div className={styles.error}>{msg}</div>
+);
 
 export default ErrorMsg;

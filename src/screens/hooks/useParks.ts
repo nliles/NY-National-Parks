@@ -1,11 +1,12 @@
 import { useState, useEffect } from "react";
 import { NPS_API_KEY, NPS_BASE_URL } from "./../../constants";
+import { Park } from "./../../types";
 
-function useParks(pageNumber) {
-  const [error, setError] = useState('');
-  const [isFetching, setIsFetching] = useState(false);
-  const [parks, setParks] = useState([]);
-  const [total, setTotal] = useState(0);
+function useParks(pageNumber: number) {
+  const [error, setError] = useState<string>("");
+  const [isFetching, setIsFetching] = useState<boolean>(false);
+  const [parks, setParks] = useState<Park[]>([]);
+  const [total, setTotal] = useState<number>(0);
 
   useEffect(() => {
     const fetchParks = async () => {
