@@ -1,12 +1,12 @@
 import { GoogleMap, Marker, useJsApiLoader } from "@react-google-maps/api";
 import { GOOGLE_API_KEY } from "../../../../constants";
 
-const mapStyles = {
+const mapContainerStyle = {
   height: "60vh",
   border: "2px solid black",
 };
 
-const exampleMapStyles = [
+const mapStyles = [
   {
     featureType: "all",
     elementType: "labels.text",
@@ -27,23 +27,13 @@ const exampleMapStyles = [
   },
   {
     featureType: "landscape",
-    elementType: "all",
+    elementType: "geometry.fill",
     stylers: [
       {
         color: "#e9e4de",
       },
     ],
   },
-  {
-    featureType: "road.highway",
-    elementType: "all",
-    stylers: [
-      {
-        color: "#f5f5f5",
-      },
-    ],
-  },
-
   {
     featureType: "road.highway",
     elementType: "geometry.stroke",
@@ -85,9 +75,9 @@ const Map = ({ park }) => {
       {isLoaded && (
         <GoogleMap
           center={center}
-          mapContainerStyle={mapStyles}
+          mapContainerStyle={mapContainerStyle}
           options={{
-            styles: exampleMapStyles,
+            styles: mapStyles,
           }}
           zoom={12}
         >

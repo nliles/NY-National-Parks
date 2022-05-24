@@ -35,7 +35,9 @@ const ParkContent = ({ park, error }) => {
         <div className={styles.images}>
           {images?.length > 0 &&
             images.map((image) => (
-              <img key={image.title} src={image.url} alt={image.title} />
+              <div className={styles.image}>
+                <img key={image.title} src={image.url} alt={image.title} />
+              </div>
             ))}
         </div>
       </div>

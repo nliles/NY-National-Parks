@@ -46,14 +46,21 @@
 }
 
 .images {
-  line-height: 0;
-  -webkit-column-count: 3;
-  -webkit-column-gap: 4px;
-  -moz-column-count: 3;
-  -moz-column-gap: 4px;
   column-count: 3;
-  column-gap: 4px;
+  column-gap: 10px;
+  column-fill: auto;
+  -webkit-column-count: 3;
+  -webkit-column-gap: 10px;
+  -moz-column-count: 3;
+  -moz-column-gap: 10px;
+  line-height: 0;
   margin-bottom: 40px;
+
+  .image {
+    display: inline-block;
+    width: 100%;
+    height: auto;
+  }
 
   @media (max-width: 800px) {
     -moz-column-count: 2;
@@ -69,7 +76,7 @@
 
   img {
     width: 100%;
-    height: auto;
-    margin-bottom: 3px;
+    height: 100%;
+    margin-bottom: 10px;
   }
 }
