@@ -8,8 +8,8 @@ const ListItem = ({ park }) => {
     <div className={styles.item}>
       <div className={styles.content}>
         <span>{park.designation.toUpperCase()}</span>
-        <Link to={`/parks/${park.parkCode}`}>
-          <div className={styles.title}>{park.fullName}</div>
+        <Link to={`/parks/${park.parkCode}`} className={styles.title}>
+          <div>{park.fullName}</div>
         </Link>
         <span>
           {stateLabel}: {park.states}

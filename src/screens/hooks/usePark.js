@@ -30,7 +30,7 @@ function useParks({ parkCode, query, searchByCode = true }) {
     if (searchByCode || query) {
       fetchParks();
     }
-  }, [parkCode, query, url]);
+  }, [parkCode, query, searchByCode, url]);
 
   return {
     loading,
