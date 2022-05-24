@@ -10,7 +10,11 @@ const Container = () => {
   const listRef = useRef(null);
   const { isFetching, setIsFetching, parks, error, total } =
     useParks(pageNumber);
-  const { parks: filteredParks, loading } = usePark({
+  const {
+    parks: filteredParks,
+    loading,
+    error: searchError,
+  } = usePark({
     query,
     searchByCode: false,
   });

@@ -7,7 +7,7 @@ const ParkView = () => {
   const { pathname } = location;
   const splitPath = pathname.split("/");
   const { parks, loading, error } = usePark({ parkCode: splitPath[2] });
-  const park = parks[0] || {};
+  const park = parks?.[0] || {};
 
   return <ParkContent park={park} loading={loading} error={error} />;
 };

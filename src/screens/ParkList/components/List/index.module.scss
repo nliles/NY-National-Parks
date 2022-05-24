@@ -1,10 +1,13 @@
+.wrapper {
+  position: relative;
+}
+
 .image {
-  height: 350px;
-  display: flex;
-  align-items: flex-end;
-  justify-content: center;
-  font-weight: 300;
-  text-align: center;
+  position: fixed;
+  top: 75px;
+  left: 0;
+  height: 375px;
+  width: 100%;
   background: url("../../../../images/Badlands.jpeg") no-repeat center;
   background-size: cover;
 }
@@ -54,7 +57,8 @@
 }
 
 .listContent {
-  width: 50%;
+  width: 60%;
+  margin-top: 450px;
 }
 
 .loader,
@@ -62,4 +66,5 @@
   font-size: 18px;
   font-weight: bold;
   margin-top: 30px;
+  text-align: center;
 }
