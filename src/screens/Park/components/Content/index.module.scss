@@ -4,6 +4,11 @@
   align-items: center;
 }
 
+.subContainer {
+  margin-top: 75px;
+  width: 75%;
+}
+
 .header {
   margin-bottom: 5px;
 }
@@ -16,22 +21,10 @@
   margin-bottom: 40px;
 }
 
-.subContainer {
-  margin-top: 75px;
-  width: 75%;
-}
-
 .locationIcon {
-  display: flex;
-  align-items: center;
-  margin-left: -3px;
-  margin-bottom: 10px;
-  padding-right: 5px;
-
+  margin-bottom: 5px;
   img {
-    max-height: 25px;
-    padding-right: 3px;
-    width: auto;
+    max-height: 30px;
   }
 }
 

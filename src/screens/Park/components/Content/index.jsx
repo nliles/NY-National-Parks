@@ -1,12 +1,13 @@
-import Camera from "../../../../images/Camera.png";
-import Location from "../../../../images/location.png";
+import location from "../../../../images/location.png";
 import ErrorMsg from "../../../../components/ErrorMsg";
+import Icon from "./Icon"
 import Map from "../Map";
 import Images from "./Images";
 import styles from "./index.module.scss";
 
 const ParkContent = ({ park, error }) => {
   const { addresses, description, designation, images } = park;
+  const locationText = `${park?.addresses?.[0].city}, ${park?.addresses?.[0].stateCode}`
   return (
     <div className={styles.container}>
       <div className={styles.subContainer}>
@@ -24,15 +25,7 @@ const ParkContent = ({ park, error }) => {
             </div>
             <div className={styles.location}>
               {addresses?.length && (
-                <div
-                  className={styles.locationIcon}
-                  key={park.addresses[0].line1}
-                >
-                  <img src={Location} alt="" />
-                  <span>
-                    {park.addresses[0].city}, {park.addresses[0].stateCode}
-                  </span>
-                </div>
+                <Icon src={location} text={locationText} klass={styles.locationIcon}/>
               )}
               {park.latitude && park.longitude && <Map park={park} />}
             </div>
