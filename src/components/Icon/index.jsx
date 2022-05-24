@@ -1,4 +1,4 @@
-import cn from 'classnames'
+import cn from "classnames";
 import styles from "./index.module.scss";
 
 const Icon = ({ src, text, klass }) => {

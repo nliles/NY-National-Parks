@@ -5,7 +5,18 @@ import Search from "../../../../components/Search";
 import styles from "./index.module.scss";
 
 const List = forwardRef(
-  ({ query, parks, loading, error, searchError, handleScroll, handleInputChange }, ref) => {
+  (
+    {
+      query,
+      parks,
+      loading,
+      error,
+      searchError,
+      handleScroll,
+      handleInputChange,
+    },
+    ref
+  ) => {
     const displayNoResults = query && parks?.length === 0;
 
     return (
@@ -24,12 +35,11 @@ const List = forwardRef(
                     onScroll={handleScroll}
                     className={styles.listContainer}
                   >
-                    {searchError && (
-                      <ErrorMsg msg={searchError} />
-                    )}
-                    {!searchError && parks?.map((park) => (
-                      <ListItem key={park.id} park={park} />
-                    ))}
+                    {searchError && <ErrorMsg msg={searchError} />}
+                    {!searchError &&
+                      parks?.map((park) => (
+                        <ListItem key={park.id} park={park} />
+                      ))}
                   </div>
                 )}
               </>

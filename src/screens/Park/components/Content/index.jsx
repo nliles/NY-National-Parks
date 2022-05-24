@@ -1,13 +1,13 @@
 import location from "../../../../images/location.png";
 import ErrorMsg from "../../../../components/ErrorMsg";
-import Icon from "../../../../components/Icon"
+import Icon from "../../../../components/Icon";
 import Map from "../Map";
 import Images from "./Images";
 import styles from "./index.module.scss";
 
 const ParkContent = ({ park, error }) => {
-  const { addresses, description, designation, images } = park;
-  const locationText = `${park?.addresses?.[0].city}, ${park?.addresses?.[0].stateCode}`
+  const { addresses, description, designation, images, url } = park;
+  const locationText = `${park?.addresses?.[0].city}, ${park?.addresses?.[0].stateCode}`;
   return (
     <div className={styles.container}>
       <div className={styles.subContainer}>
@@ -15,8 +15,10 @@ const ParkContent = ({ park, error }) => {
         {!error && park && (
           <>
             {park.fullName && (
-              <div className={styles.header} key={park.fullName}>
-                <h2 className={styles.header}>{park.fullName}</h2>
+              <div className={styles.header}>
+                <h2 className={styles.header}>
+                  <a href={park.url}>{park.fullName}</a>
+                </h2>
                 <strong>{designation}</strong>
               </div>
             )}
@@ -25,7 +27,11 @@ const ParkContent = ({ park, error }) => {
             </div>
             <div className={styles.location}>
               {addresses?.length && (
-                <Icon src={location} text={locationText} klass={styles.locationIcon}/>
+                <Icon
+                  src={location}
+                  text={locationText}
+                  klass={styles.locationIcon}
+                />
               )}
               {park.latitude && park.longitude && <Map park={park} />}
             </div>
