@@ -2,11 +2,11 @@ import location from "images/location.png";
 import ErrorMsg from "components/ErrorMsg";
 import Spinner from "components/Spinner";
 import Icon from "components/Icon";
-import Map from "../Map";
-import Header from "./Header";
-import Images from "./Images";
-import styles from "./index.module.scss";
 import { Park } from "types";
+import Map from "screens/Park/components/Map";
+import Header from "screens/Park/components/Content/Header";
+import Images from "screens/Park/components/Content/Images";
+import styles from "./index.module.scss";
 
 type ParkContentProps = {
   park: Park;
@@ -32,9 +32,7 @@ const ParkContent = ({ loading, park, error }: ParkContentProps) => {
       <div className={styles.subContainer}>
         {error && <ErrorMsg msg={error} />}
         {loading && (
-          <div className={styles.loading}>
             <Spinner />
-          </div>
         )}
         {!error && !loading && park && (
           <>

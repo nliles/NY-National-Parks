@@ -1,13 +1,13 @@
-import { useState, useEffect, useRef } from "react";
-import List from "../List";
+import { useState, useEffect, useRef, FormEvent } from "react";
+import List from "screens/ParkList/components/List";
 import usePark from "screens/hooks/usePark";
 import useParks from "screens/hooks/useParks";
 import { stripPunctuation } from "screens/helpers/stripPunctuation";
 
 const Container = () => {
-  const [query, setQuery] = useState("");
-  const [pageNumber, setPageNumber] = useState(1);
-  const listRef = useRef(null);
+  const [query, setQuery] = useState<string>("");
+  const [pageNumber, setPageNumber] = useState<number>(1);
+  const listRef = useRef<HTMLDivElement>(null);
   const { isFetching, setIsFetching, parks, error, total } =
     useParks(pageNumber);
   const { parks: filteredParks, error: searchError } = usePark({
@@ -34,8 +34,8 @@ const Container = () => {
     }
   };
 
-  const handleInputChange = (event) => {
-    const query = event.target.value;
+  const handleInputChange = (e: FormEvent<HTMLInputElement>) => {
+    const query = (e.target as HTMLInputElement).value;
     setQuery(query);
   };
 

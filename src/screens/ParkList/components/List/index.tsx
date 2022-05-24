@@ -1,17 +1,25 @@
-import { forwardRef } from "react";
-import ListItem from "../ListItem";
+import { FormEvent, forwardRef } from "react";
 import ErrorMsg from "components/ErrorMsg";
-import Spinner from "components/Spinner";
 import Search from "components/Search";
+import { Park } from "types";
+import ListItem from "screens/ParkList/components/ListItem";
 import styles from "./index.module.scss";
 
-const List = forwardRef(
+type ListProps = {
+  error: string,
+  searchError: string,
+  parks: Park[],
+  handleScroll: () => void,
+  handleInputChange: (e: FormEvent<HTMLInputElement>) => void,
+  query: string
+}
+
+const List = forwardRef<HTMLDivElement, ListProps>(
   (
     {
       query,
       parks,
       error,
-      loading,
       searchError,
       handleScroll,
       handleInputChange,
@@ -22,16 +30,13 @@ const List = forwardRef(
 
     return (
       <div className={styles.wrapper}>
-        {!error && loading && <Spinner />}
-        {!loading && (
-          <>
             <div className={styles.listView}>
               <div className={styles.listContent}>
                 {error && <ErrorMsg msg={error} />}
                 {!error && (
                   <>
                     <Search handleInputChange={handleInputChange} />
-                    {!loading && displayNoResults && (
+                    {displayNoResults && (
                       <span>No Results Found</span>
                     )}
                     <div
@@ -56,8 +61,6 @@ const List = forwardRef(
                 )}
               </div>
             </div>
-          </>
-        )}
       </div>
     );
   }

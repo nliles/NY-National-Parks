@@ -1,5 +1,5 @@
 import { useLocation } from "react-router-dom";
-import ParkContent from "../Content";
+import ParkContent from "screens/Park/components/Content";
 import usePark from "screens/hooks/usePark";
 
 const ParkView = () => {

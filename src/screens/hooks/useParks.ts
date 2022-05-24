@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { NPS_API_KEY, NPS_BASE_URL } from "./../../constants";
-import { Park } from "./../../types";
+import { Park } from "types";
 
 function useParks(pageNumber: number) {
   const [error, setError] = useState<string>("");
