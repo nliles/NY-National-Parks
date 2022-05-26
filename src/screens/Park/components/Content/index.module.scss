@@ -42,39 +42,3 @@
     max-height: 40px;
   }
 }
-
-.images {
-  column-count: 3;
-  column-gap: 10px;
-  column-fill: auto;
-  -webkit-column-count: 3;
-  -webkit-column-gap: 10px;
-  -moz-column-count: 3;
-  -moz-column-gap: 10px;
-  line-height: 0;
-  margin-bottom: 40px;
-
-  .image {
-    display: inline-block;
-    width: 100%;
-    height: auto;
-  }
-
-  @media (max-width: 800px) {
-    -moz-column-count: 2;
-    -webkit-column-count: 2;
-    column-count: 2;
-  }
-
-  @media (max-width: 400px) {
-    -moz-column-count: 1;
-    -webkit-column-count: 1;
-    column-count: 1;
-  }
-
-  img {
-    width: 100%;
-    height: 100%;
-    margin-bottom: 10px;
-  }
-}

@@ -1,0 +1,36 @@
+@import "styles/breakpoints.scss";
+
+.images {
+  column-count: 3;
+  column-gap: 10px;
+  column-fill: balance-all;
+  -webkit-column-count: 3;
+  -webkit-column-gap: 10px;
+  -moz-column-count: 3;
+  -moz-column-gap: 10px;
+  line-height: 0;
+  margin-bottom: 40px;
+
+  .image {
+    width: 100%;
+    height: auto;
+  }
+
+  @media (max-width: $tablet) {
+    -moz-column-count: 2;
+    -webkit-column-count: 2;
+    column-count: 2;
+  }
+
+  @media (max-width: $mobile) {
+    -moz-column-count: 1;
+    -webkit-column-count: 1;
+    column-count: 1;
+  }
+
+  img {
+    width: 100%;
+    height: 100%;
+    margin-bottom: 10px;
+  }
+}

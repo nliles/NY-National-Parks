@@ -1,5 +1,8 @@
+@import "styles/breakpoints.scss";
+@import "styles/colors.scss";
+
 .item {
-  border-bottom: 1px solid #d3d3d3;
+  border-bottom: 1px solid $gray;
   padding: 10px 0 10px 0;
   display: flex;
   align-items: center;
@@ -9,17 +12,17 @@
 .content {
   width: 70%;
 
-  @media (max-width: 400px) {
+  @media (max-width: $mobile) {
     width: 100%;
   }
 
-  @media (max-width: 800px) {
+  @media (max-width: $tablet) {
     width: 60%;
   }
 }
 
 .title {
-  color: #6699cc;
+  color: $blue;
 }
 
 .content span {
@@ -31,7 +34,7 @@
   min-width: 125px;
   margin-right: 5px;
 
-  @media (max-width: 400px) {
+  @media (max-width: $mobile) {
     display: none;
   }
 }

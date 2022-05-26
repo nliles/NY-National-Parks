@@ -36,6 +36,30 @@ export const mapStyles = [
     ],
   },
   {
+    featureType: "poi.park",
+    stylers: [
+      {
+        color: "#bccbae",
+      },
+    ],
+  },
+  {
+    featureType: "poi.sports_complex",
+    stylers: [
+      {
+        color: "#bccbae",
+      },
+    ],
+  },
+  {
+    featureType: "poi.attraction",
+    stylers: [
+      {
+        color: "#bccbae",
+      },
+    ],
+  },
+  {
     featureType: "water",
     elementType: "all",
     stylers: [

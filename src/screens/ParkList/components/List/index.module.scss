@@ -1,3 +1,6 @@
+@import "styles/breakpoints.scss";
+@import "styles/colors.scss";
+
 .wrapper {
   position: relative;
 }
@@ -5,23 +8,6 @@
 .listContainer {
   height: 500px;
   overflow: auto;
-}
-
-.listBtn {
-  margin-bottom: 30px;
-  background-color: #191308;
-  border: 2px solid #fff;
-  border-radius: 5px;
-  font-weight: 700;
-  padding: 17px 0;
-  padding: 1.0625rem 0;
-  text-transform: uppercase;
-  width: 220px;
-  margin-bottom: 30px;
-}
-
-.btnText {
-  color: #fff;
 }
 
 .listView {
@@ -37,11 +23,11 @@
 .title {
   text-align: center;
 
-  @media (max-width: 800px) {
+  @media (max-width: $tablet) {
     width: 70%;
   }
 
-  @media (max-width: 400px) {
+  @media (max-width: $mobile) {
     width: 90%;
   }
 }
@@ -49,6 +35,10 @@
 .listContent {
   width: 60%;
   margin-top: 450px;
+
+  @media (max-width: $mobile) {
+    margin-top: 100px;
+  }
 }
 
 .loader,

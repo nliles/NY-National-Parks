@@ -1,3 +1,6 @@
+@import "styles/breakpoints.scss";
+@import "styles/colors.scss";
+
 .nav {
   position: fixed;
   width: 100vw;
@@ -6,7 +9,7 @@
 
 .header {
   height: 75px;
-  background-color: #191308;
+  background-color: $black;
 
   a {
     text-decoration: none;
@@ -16,12 +19,16 @@
 .image {
   height: 375px;
   width: 100%;
-  background: url("../../images/badlands.jpeg") no-repeat center;
+  background: url("./../../images/badlands.jpeg") no-repeat center;
   background-size: cover;
   display: none;
 
   &.show {
     display: block;
+  }
+
+  @media (max-width: $mobile) {
+    display: none !important;
   }
 }
 
@@ -32,17 +39,14 @@
   display: flex;
   align-items: center;
 
-  @media (max-width: 800px) {
+  @media (max-width: $tablet) {
     margin-left: 0;
-  }
-
-  @media (max-width: 769px) {
     justify-content: center;
   }
 }
 
 .title {
-  color: #fff;
+  color: $white;
   margin: 0;
   font-size: 1.75em;
 }
