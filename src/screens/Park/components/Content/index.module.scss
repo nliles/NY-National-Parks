@@ -1,5 +1,7 @@
+@import "styles/colors.scss";
+
 .container {
-  height: 100vh;
+  height: 100%;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -7,6 +9,7 @@
 
 .subContainer {
   margin-top: 75px;
+  margin-bottom: 40px;
   width: 75%;
   height: 100%;
 }
@@ -14,7 +17,7 @@
 .header {
   margin-bottom: 5px;
   a {
-    color: black;
+    color: $black;
   }
 }
 

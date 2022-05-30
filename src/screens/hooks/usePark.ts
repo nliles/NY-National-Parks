@@ -8,14 +8,16 @@ type ParkProps = {
   searchByCode?: boolean;
 };
 
-function useParks({ parkCode, query, searchByCode = true }: ParkProps) {
+function usePark({ parkCode, query, searchByCode = true }: ParkProps) {
   const [loading, setLoading] = useState<boolean>(false);
   const [error, setError] = useState<string>("");
   const [parks, setParks] = useState<Park[]>([]);
 
+  const formattedQuery = encodeURIComponent(query || '')
+
   const url = searchByCode
     ? `${NPS_BASE_URL}/parks?parkCode=${parkCode}&fields=images,addresses&api_key=${NPS_API_KEY}`
-    : `${NPS_BASE_URL}/parks?q=${query}&fields=images&api_key=${NPS_API_KEY}`;
+    : `${NPS_BASE_URL}/parks?q=${formattedQuery}&fields=images&api_key=${NPS_API_KEY}`;
 
   useEffect(() => {
     const fetchParks = async () => {
@@ -46,4 +48,4 @@ function useParks({ parkCode, query, searchByCode = true }: ParkProps) {
   };
 }
 
-export default useParks;
+export default usePark;

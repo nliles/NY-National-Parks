@@ -1,5 +1,6 @@
 import { FormEvent, forwardRef } from "react";
 import ErrorMsg from "components/ErrorMsg";
+import Banner from "components/Banner"
 import Search from "components/Search";
 import { Park } from "types";
 import ListItem from "screens/ParkList/components/ListItem";
@@ -23,6 +24,7 @@ const List = forwardRef<HTMLDivElement, ListProps>(
 
     return (
       <div className={styles.wrapper}>
+        <Banner/>
         <div className={styles.listView}>
           <div className={styles.listContent}>
             {error && <ErrorMsg msg={error} />}
